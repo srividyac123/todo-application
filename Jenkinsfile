@@ -4,7 +4,7 @@ pipeline {
     environment {
         GIT_REPO = 'https://github.com/srividyac123/todo-application.git'
         GITHUB_CREDENTIALS = 'credsgitnew'
-        DOCKERHUB_CREDENTIALS = 'docker'
+        DOCKERHUB_CREDENTIALS = 'docker-hub-credentials'
         IMAGE_NAME = 'srividyac09/todo-application-image'
     }
     stages {
