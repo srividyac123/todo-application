@@ -10,7 +10,9 @@ pipeline {
       stage('chekout') {
         steps {
            script{
-             git credentialsId: "${GITHUB_CREDENTIALS}", url: "${GIT_REPO}"
+             git credentialsId: "${GITHUB_CREDENTIALS}", url: "${GIT_REPO}",
+             git branch: 'master',
+             url: "https://github.com/srividyac123/todo-application.git"
            }
         }
       }
