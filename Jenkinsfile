@@ -13,11 +13,13 @@ pipeline {
              git credentialsId: "${GITHUB_CREDENTIALS}", url: "${GIT_REPO}"
              }
       }
+      /*
       stage('build') {
         steps {
             sh 'mvn clean install -DskipTests'
         }
       }
+      */
       stage('build docker image') {
         steps {
           script {
