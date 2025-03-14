@@ -23,14 +23,24 @@ pipeline {
       stage('build docker image') {
         steps {
           script {
-            docker.build("${IMAGE_NAME}:latest")
+            podman.build("${IMAGE_NAME}:latest")
           }
         }
       }
-      stage('push docker image') {
+      /*
+        stage('push docker image') {
         steps {
              withCredentials([usernamePassword(credentialsId: "${DOCKERHUB_CREDENTIALS}" , usernameVariable: "DOCKER_USER", passwordVariable: 'test123123')]) {
               sh "echo test123123 | docker login -u ${DOCKER_USER} --password-stdin"
+              sh "docker push ${IMAGE_NAME}:latest"
+          }
+        }
+      }
+      */
+        stage('push docker image') {
+        steps {
+             withCredentials([usernamePassword(credentialsId: DOCKERHUB_CREDENTIALS , usernameVariable: 'srividyac09', passwordVariable: 'test123123')]) {
+              sh "echo test123123 | podman login -u srividyac09 --password-stdin https://hub.docker.com/u/srividyac09"
               sh "docker push ${IMAGE_NAME}:latest"
           }
         }
