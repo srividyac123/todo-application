@@ -5,6 +5,7 @@ pipeline {
         GIT_REPO = 'https://github.com/srividyac123/todo-application.git'
         GITHUB_CREDENTIALS = 'credsgitnew'
         DOCKERHUB_CREDENTIALS = 'docker'
+        IMAGE_NAME = 'todo-application-image:latest'
     }
     stages {
       stage('chekout') {
@@ -45,7 +46,7 @@ pipeline {
       stage('verify services') {
         steps {
           script {
-            def servicesStatus = sh(script: 'docker-compose -f docker-compose.yaml ps', resturnStdout: true).trim()
+            def servicesStatus = sh(script: 'docker-compose -f docker-compose.yaml ps', returnStdout: true).trim()
             if (serviceStatus.contains("up")) {
                 echo "yes"
             } else {
