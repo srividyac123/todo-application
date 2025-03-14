@@ -41,7 +41,7 @@ pipeline {
         steps {
              withCredentials([usernamePassword(credentialsId: DOCKERHUB_CREDENTIALS , usernameVariable: 'srividyac09', passwordVariable: 'test123123')]) {
               sh "echo test123123 | podman login -u srividyac09 --password-stdin https://hub.docker.com/u/srividyac09"
-              sh "docker push ${IMAGE_NAME}:latest"
+              sh "podman push ${IMAGE_NAME}:latest"
           }
         }
       }
