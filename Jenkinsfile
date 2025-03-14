@@ -27,10 +27,9 @@ pipeline {
       }
       stage('push docker image') {
         steps {
-          script {
-            docker.withRegistry('https://hub.docker.com', "${DOCKERHUB_CREDENTIALS}") {
-              docker.image("${IMAGE_NAME}:latest").push()
-            }
+             withCredentials([usernamePassword(credentialsId: "${DOCKERHUB_CREDENTIALS}" , usernamevariable: "DOCKER_USER, passwordVariable: "test123123")]}
+              sh "echo test123123 | docker login -u ${DOCKER_USER} --password-stdin"
+              sh "docker push ${IMAGE_NAME}:latest"
           }
         }
       }
