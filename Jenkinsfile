@@ -5,7 +5,7 @@ pipeline {
         GIT_REPO = 'https://github.com/srividyac123/todo-application.git'
         GITHUB_CREDENTIALS = 'credsgitnew'
         DOCKERHUB_CREDENTIALS = 'docker'
-        IMAGE_NAME = 'todo-application-image:latest'
+        IMAGE_NAME = 'srividyac09/todo-application-image:latest'
     }
     stages {
       stage('chekout') {
