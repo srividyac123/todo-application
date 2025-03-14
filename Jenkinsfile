@@ -10,10 +10,8 @@ pipeline {
     stages {
       stage('chekout') {
         steps {
-           script{
              git credentialsId: "${GITHUB_CREDENTIALS}", url: "${GIT_REPO}"
-           }
-        }
+             }
       }
       stage('build') {
         steps {
@@ -39,15 +37,15 @@ pipeline {
       stage('deploy with docker compose') {
         steps {
           script {
-            sh 'docker-compose -f docker-compose.yaml up -d'
+             'docker-compose -f docker-compose.yaml up -d'
           }
         }
       }
       stage('verify services') {
         steps {
           script {
-            def servicesStatus = sh(script: 'docker-compose -f docker-compose.yaml ps', returnStdout: true).trim()
-            if (serviceStatus.contains("up")) {
+            def servicesStatus = (script: 'docker-compose -f docker-compose.yaml ps', returnStdout: true).trim()
+            if (servicesStatus.contains("up")) {
                 echo "yes"
             } else {
                 error "not running"
