@@ -44,7 +44,7 @@ pipeline {
       stage('verify services') {
         steps {
           script {
-            def servicesStatus = (script: 'docker-compose -f docker-compose.yaml ps', returnStdout: true).trim()
+            def servicesStatus = sh(script: 'docker-compose -f docker-compose.yaml ps', returnStdout: true).trim()
             if (servicesStatus.contains("up")) {
                 echo "yes"
             } else {
