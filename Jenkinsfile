@@ -3,7 +3,7 @@ pipeline {
 
     environment {
         GIT_REPO = 'https://github.com/srividyac123/todo-application.git'
-        GITHUB_CREDENTIALS = 'gitcreds'
+        GITHUB_CREDENTIALS = 'credsgitnew'
         DOCKERHUB_CREDENTIALS = 'docker'
     }
     stages {
