@@ -55,11 +55,11 @@ pipeline {
         }
       }
     }
-    post [
+    post {
         always {
             script {
                 sh 'docker-compose -f docker-compose.yaml down'
             }
         }
-    ]
+    }
 }
