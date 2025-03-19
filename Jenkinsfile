@@ -21,7 +21,7 @@ pipeline {
         }
         stage('push image to docker hub'){
             steps{
-                sh 'docker login -u srividyac09 -p test123test123'
+                sh 'docker login -u srividyac09 -p 12vidya12'
                 sh 'docker tag todo-application-image:latest srividyac09/odo-application-image:latest'
                 sh 'docker push srividyac09/todo-application-image:latest'
             }
