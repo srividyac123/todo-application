@@ -1,0 +1,35 @@
+# write your docker-compose code here.Use the `docker compose` command instead of the legacy `docker-compose`, as it is integrated into Docker CLI (v20.10+),eliminating the need for a separate binary. It provides better performance, consistency, and is actively maintained, unlike the legacy command.
+version: '3.8'
+
+networks:
+  todo-network:
+    driver: bridge
+volumes:
+  mysql-data:
+
+services:
+  todo-applications:
+    image: todo-application-image:latest
+    container_name: todo-application
+    ports:
+      - "8082:8081"
+    networks:
+      - todo-network
+    depends_on:
+      - mysql-db
+    environment:
+      SPRING_DATASOURCE_USERNAME: root
+      SPRING_DATASOURCE_PASSWORD: Root@123
+    restart: always
+  mysql-db:
+    image: mysql:8
+    container_name: mysql-db
+    environment:
+      MYSQL_ROOT_PASSWORD: Root@123
+      MYSQL_DATABASE: tododb
+    ports:
+      - "3307:3306"
+    networks:
+      - todo-network
+    volumes:
+      - mysql-data:/var/lib/mysql  
