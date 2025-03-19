@@ -6,7 +6,7 @@ pipeline {
     stages{
         stage('Clone Repository'){
             steps{
-                git branch: 'master', url: ''
+                git branch: 'master', url: 'https://github.com/srividyac123/todo-application.git'
             }
         }
         stage('builds with maven'){
